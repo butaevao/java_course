@@ -15,7 +15,6 @@ public class ApplicationManager {
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
 
-
   public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -29,10 +28,6 @@ public class ApplicationManager {
 
   public void stop() {
     wd.quit();
-  }
-
-  public void alertOk() {
-    wd.switchTo().alert().accept();
   }
 
   public GroupHelper getGroupHelper() {
