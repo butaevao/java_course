@@ -22,8 +22,10 @@ public class HelperBase {
 
   protected void type(By locator, String text) {
     WebElement element = wd.findElement(locator);
-    element.clear();
-    element.sendKeys(text);
+    if (text != null) {
+      element.clear();
+      element.sendKeys(text);
+    }
   }
 
   public void alertOk() {
