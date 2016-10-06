@@ -23,8 +23,11 @@ public class HelperBase {
   protected void type(By locator, String text) {
     WebElement element = wd.findElement(locator);
     if (text != null) {
-      element.clear();
-      element.sendKeys(text);
+      String existingText = element.getAttribute("value");
+      if (! text.equals(existingText)) {
+        element.clear();
+        element.sendKeys(text);
+      }
     }
   }
 
