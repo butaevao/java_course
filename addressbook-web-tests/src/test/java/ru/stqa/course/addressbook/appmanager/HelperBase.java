@@ -1,6 +1,7 @@
 package ru.stqa.course.addressbook.appmanager;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.BrowserType;
 
 
 /**
