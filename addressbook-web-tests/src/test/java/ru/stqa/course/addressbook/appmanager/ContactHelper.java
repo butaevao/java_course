@@ -8,7 +8,7 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.course.addressbook.model.ContactData;
-
+import ru.stqa.course.addressbook.appmanager.NavigationHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,6 @@ public class ContactHelper extends HelperBase {
     }
   }
 
-
   public void deleteSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
@@ -73,6 +72,21 @@ public class ContactHelper extends HelperBase {
   public void createContact(ContactData contact) {
     fillContactForm(contact, true);
     submitContactCreation();
+  }
+
+  public void modifyContact(int index, ContactData contact, NavigationHelper navHelp) {
+    selectContact(index);
+    initContactModification(index);
+    fillContactForm(contact, false);
+    submitModification();
+    navHelp.goToHomePage();
+  }
+
+  public void deleteContact(int index, NavigationHelper navHelp) {
+    selectContact(index);
+    deleteSelectedContact();
+    alertOk();
+    navHelp.goToHomePage();
   }
 
   public boolean isThereAContact() {
