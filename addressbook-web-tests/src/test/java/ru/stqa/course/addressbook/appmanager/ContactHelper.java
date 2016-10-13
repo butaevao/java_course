@@ -104,8 +104,7 @@ public class ContactHelper extends HelperBase {
       String address = element.findElement(By.xpath("./td[4]")).getText();
       String home = element.findElement(By.xpath("./td[6]")).getText();
       String email = element.findElement(By.xpath("./td[5]")).getText();
-      ContactData contact = new ContactData(id, name, null, surname, null, null, null, address, home, null, null, email, null, null, null, null);
-      contacts.add(contact);
+      contacts.add(new ContactData().withId(id).withName(name).withLastName(surname).withAddress(address).withHome(home).withEmail(email));
     }
     return contacts;
   }
