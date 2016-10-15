@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.course.addressbook.model.ContactData;
-
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Оля on 01.10.2016.
@@ -17,10 +17,6 @@ public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver wd) {
     super(wd);
-  }
-
-  public void returnToAddNewPage() {
-    click(By.linkText("add next"));
   }
 
   public void submitContactCreation() {
@@ -54,12 +50,12 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
-  public void initContactModification(int index) {
-    wd.findElements(By.xpath("//a/img[@title = 'Edit']")).get(index).click();
+  public void initContactModificationById(int id) {
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
   }
 
   public void submitModification() {
@@ -71,16 +67,16 @@ public class ContactHelper extends HelperBase {
     submitContactCreation();
   }
 
-  public void modify(int index, ContactData contact, NavigationHelper navHelp) {
-    selectContact(index);
-    initContactModification(index);
+  public void modify(ContactData contact, NavigationHelper navHelp) {
+    selectContactById(contact.getId());
+    initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitModification();
     navHelp.homePage();
   }
 
-  public void delete(int index, NavigationHelper navHelp) {
-    selectContact(index);
+  public void delete(ContactData contact, NavigationHelper navHelp) {
+    selectContactById(contact.getId());
     deleteSelectedContact();
     alertOk();
     navHelp.homePage();
@@ -94,8 +90,8 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));

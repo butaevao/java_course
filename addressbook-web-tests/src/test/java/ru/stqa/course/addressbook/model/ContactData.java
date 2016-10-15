@@ -157,12 +157,6 @@ public class ContactData {
     return this;
   }
 
-
-  public ContactData withGroup(String group) {
-    this.group = group;
-    return this;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -170,6 +164,7 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
+    if (id != that.id) return false;
     if (name != null ? !name.equals(that.name) : that.name != null) return false;
     if (middlename != null ? !middlename.equals(that.middlename) : that.middlename != null) return false;
     if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
@@ -189,7 +184,8 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-    int result = name != null ? name.hashCode() : 0;
+    int result = id;
+    result = 31 * result + (name != null ? name.hashCode() : 0);
     result = 31 * result + (middlename != null ? middlename.hashCode() : 0);
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
@@ -204,6 +200,11 @@ public class ContactData {
     result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     result = 31 * result + (homepage != null ? homepage.hashCode() : 0);
     return result;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
   }
 
   @Override
