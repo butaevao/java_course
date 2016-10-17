@@ -112,11 +112,14 @@ public class ContactHelper extends HelperBase {
       String surname = row.findElement(By.xpath("./td[2]")).getText();
       String address = row.findElement(By.xpath("./td[4]")).getText();
       String email = row.findElement(By.xpath("./td[5]")).getText();
+      String allPhones = cells.get(5).getText();
       String[] phones = cells.get(5).getText().split("\n");
       contactCache.add(new ContactData().withId(id)
               .withName(name).withLastName(surname).withAddress(address)
-              .withHome(phones[0]).withMobile(phones[1]).withWork(phones[2])
-              .withEmail(email));
+              .withHome(phones[0])
+              .withMobile(phones[1])
+              .withWork(phones[2])
+              .withAllPhones(allPhones).withEmail(email));
     }
     return contactCache;
   }

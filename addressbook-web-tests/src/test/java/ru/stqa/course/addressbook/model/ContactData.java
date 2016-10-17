@@ -17,7 +17,17 @@ public class ContactData {
   private String email2;
   private String email3;
   private String homepage;
+  private String allPhones;
   private String group;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
 
   public String getName() {
     return name;
@@ -186,6 +196,7 @@ public class ContactData {
             ", address='" + address + '\'' +
             ", home='" + home + '\'' +
             ", mobile='" + mobile + '\'' +
+            ", work='" + work + '\'' +
             ", fax='" + fax + '\'' +
             ", email='" + email + '\'' +
             ", email2='" + email2 + '\'' +
