@@ -13,16 +13,13 @@ public class ContactCreationTests extends TestBase {
     app.goTo().homePage();
     Contacts before = app.contact().all();
     ContactData contact = new ContactData()
-            .withName("Name").withLastName("Surname").withAddress("MyAddress").withHome("+7111111111").withMobile("33 44 55").withWork("44-55").withEmail("myemail@mail.com").withGroup("test3");
+            .withName("Name").withLastName("Surname").withAddress("MyAddress").withAllPhones("+711111").withAllEmails("myemail@mail.com").withGroup("test3");
     app.goTo().addNewPage();
     app.contact().create(contact);
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
     assertThat(after, equalTo(
-            before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt())
-                    .withHome(contact.getHome().replaceAll("\\s", "").replaceAll("[-()]", ""))
-                    .withMobile(contact.getMobile().replaceAll("\\s", "").replaceAll("[-()]", ""))
-                    .withWork(contact.getWork().replaceAll("\\s", "").replaceAll("[-()]", "")))));
+            before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 }
