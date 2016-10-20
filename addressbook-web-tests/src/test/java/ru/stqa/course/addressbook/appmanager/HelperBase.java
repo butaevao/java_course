@@ -3,6 +3,8 @@ package ru.stqa.course.addressbook.appmanager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.remote.BrowserType;
 
+import java.io.File;
+
 
 /**
  * Created by Оля on 01.10.2016.
@@ -26,6 +28,13 @@ public class HelperBase {
         element.clear();
         element.sendKeys(text);
       }
+    }
+  }
+
+  protected void attach(By locator, File file) {
+    WebElement element = wd.findElement(locator);
+    if (file != null) {
+        element.sendKeys(file.getAbsolutePath());
     }
   }
 
