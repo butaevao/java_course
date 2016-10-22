@@ -1,0 +1,112 @@
+<list>
+  <contact>
+    <name>name 0</name>
+    <lastName>surname 0</lastName>
+    <address>address 0</address>
+    <home>+7 111 111 0</home>
+    <mobile>33 44 0</mobile>
+    <work>44-55-66 0</work>
+    <email>mymail@rambler.ru 0</email>
+    <email2>mymail@yandex.ru 0</email2>
+    <email3>mymail@gmail.com 0</email3>
+  </contact>
+  <contact>
+    <name>name 1</name>
+    <lastName>surname 1</lastName>
+    <address>address 1</address>
+    <home>+7 111 111 1</home>
+    <mobile>33 44 1</mobile>
+    <work>44-55-66 1</work>
+    <email>mymail@rambler.ru 1</email>
+    <email2>mymail@yandex.ru 1</email2>
+    <email3>mymail@gmail.com 1</email3>
+  </contact>
+  <contact>
+    <name>name 2</name>
+    <lastName>surname 2</lastName>
+    <address>address 2</address>
+    <home>+7 111 111 2</home>
+    <mobile>33 44 2</mobile>
+    <work>44-55-66 2</work>
+    <email>mymail@rambler.ru 2</email>
+    <email2>mymail@yandex.ru 2</email2>
+    <email3>mymail@gmail.com 2</email3>
+  </contact>
+  <contact>
+    <name>name 3</name>
+    <lastName>surname 3</lastName>
+    <address>address 3</address>
+    <home>+7 111 111 3</home>
+    <mobile>33 44 3</mobile>
+    <work>44-55-66 3</work>
+    <email>mymail@rambler.ru 3</email>
+    <email2>mymail@yandex.ru 3</email2>
+    <email3>mymail@gmail.com 3</email3>
+  </contact>
+  <contact>
+    <name>name 4</name>
+    <lastName>surname 4</lastName>
+    <address>address 4</address>
+    <home>+7 111 111 4</home>
+    <mobile>33 44 4</mobile>
+    <work>44-55-66 4</work>
+    <email>mymail@rambler.ru 4</email>
+    <email2>mymail@yandex.ru 4</email2>
+    <email3>mymail@gmail.com 4</email3>
+  </contact>
+  <contact>
+    <name>name 5</name>
+    <lastName>surname 5</lastName>
+    <address>address 5</address>
+    <home>+7 111 111 5</home>
+    <mobile>33 44 5</mobile>
+    <work>44-55-66 5</work>
+    <email>mymail@rambler.ru 5</email>
+    <email2>mymail@yandex.ru 5</email2>
+    <email3>mymail@gmail.com 5</email3>
+  </contact>
+  <contact>
+    <name>name 6</name>
+    <lastName>surname 6</lastName>
+    <address>address 6</address>
+    <home>+7 111 111 6</home>
+    <mobile>33 44 6</mobile>
+    <work>44-55-66 6</work>
+    <email>mymail@rambler.ru 6</email>
+    <email2>mymail@yandex.ru 6</email2>
+    <email3>mymail@gmail.com 6</email3>
+  </contact>
+  <contact>
+    <name>name 7</name>
+    <lastName>surname 7</lastName>
+    <address>address 7</address>
+    <home>+7 111 111 7</home>
+    <mobile>33 44 7</mobile>
+    <work>44-55-66 7</work>
+    <email>mymail@rambler.ru 7</email>
+    <email2>mymail@yandex.ru 7</email2>
+    <email3>mymail@gmail.com 7</email3>
+  </contact>
+  <contact>
+    <name>name 8</name>
+    <lastName>surname 8</lastName>
+    <address>address 8</address>
+    <home>+7 111 111 8</home>
+    <mobile>33 44 8</mobile>
+    <work>44-55-66 8</work>
+    <email>mymail@rambler.ru 8</email>
+    <email2>mymail@yandex.ru 8</email2>
+    <email3>mymail@gmail.com 8</email3>
+  </contact>
+  <contact>
+    <name>name 9</name>
+    <lastName>surname 9</lastName>
+    <address>address 9</address>
+    <home>+7 111 111 9</home>
+    <mobile>33 44 9</mobile>
+    <work>44-55-66 9</work>
+    <email>mymail@rambler.ru 9</email>
+    <email2>mymail@yandex.ru 9</email2>
+    <email3>mymail@gmail.com 9</email3>
+  </contact>
+</list>
