@@ -76,10 +76,10 @@ public class ContactDataGenerator {
   private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
     Writer writer = new FileWriter(file);
     for (ContactData contact : contacts) {
-      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getName(),
+      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getName(),
               contact.getLastName(), contact.getAddress(),
               contact.getHome(), contact.getMobile(), contact.getWork(),
-              contact.getEmail(), contact.getEmail2(), contact.getEmail3()));
+              contact.getEmail(), contact.getEmail2(), contact.getEmail3(), contact.getGroup()));
     }
     writer.close();
   }
@@ -95,7 +95,8 @@ public class ContactDataGenerator {
               .withWork(String.format("44-55-66 %s", i))
               .withEmail(String.format("mymail@rambler.ru %s", i))
               .withEmail2(String.format("mymail@yandex.ru %s", i))
-              .withEmail3(String.format("mymail@gmail.com %s", i)));
+              .withEmail3(String.format("mymail@gmail.com %s", i))
+              .withGroup(String.format("test 1")));
     }
     return contacts;
   }

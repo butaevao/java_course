@@ -1,10 +1,3 @@
-name 0;surname 0;address 0;+7 111 111 0;33 44 0;44-55-66 0;mymail@rambler.ru 0;mymail@yandex.ru 0;mymail@gmail.com 0
-name 1;surname 1;address 1;+7 111 111 1;33 44 1;44-55-66 1;mymail@rambler.ru 1;mymail@yandex.ru 1;mymail@gmail.com 1
-name 2;surname 2;address 2;+7 111 111 2;33 44 2;44-55-66 2;mymail@rambler.ru 2;mymail@yandex.ru 2;mymail@gmail.com 2
-name 3;surname 3;address 3;+7 111 111 3;33 44 3;44-55-66 3;mymail@rambler.ru 3;mymail@yandex.ru 3;mymail@gmail.com 3
-name 4;surname 4;address 4;+7 111 111 4;33 44 4;44-55-66 4;mymail@rambler.ru 4;mymail@yandex.ru 4;mymail@gmail.com 4
-name 5;surname 5;address 5;+7 111 111 5;33 44 5;44-55-66 5;mymail@rambler.ru 5;mymail@yandex.ru 5;mymail@gmail.com 5
-name 6;surname 6;address 6;+7 111 111 6;33 44 6;44-55-66 6;mymail@rambler.ru 6;mymail@yandex.ru 6;mymail@gmail.com 6
-name 7;surname 7;address 7;+7 111 111 7;33 44 7;44-55-66 7;mymail@rambler.ru 7;mymail@yandex.ru 7;mymail@gmail.com 7
-name 8;surname 8;address 8;+7 111 111 8;33 44 8;44-55-66 8;mymail@rambler.ru 8;mymail@yandex.ru 8;mymail@gmail.com 8
-name 9;surname 9;address 9;+7 111 111 9;33 44 9;44-55-66 9;mymail@rambler.ru 9;mymail@yandex.ru 9;mymail@gmail.com 9
+name 0;surname 0;address 0;+7 111 111 0;33 44 0;44-55-66 0;mymail@rambler.ru 0;mymail@yandex.ru 0;mymail@gmail.com 0;test 1
+name 1;surname 1;address 1;+7 111 111 1;33 44 1;44-55-66 1;mymail@rambler.ru 1;mymail@yandex.ru 1;mymail@gmail.com 1;test 1
+name 2;surname 2;address 2;+7 111 111 2;33 44 2;44-55-66 2;mymail@rambler.ru 2;mymail@yandex.ru 2;mymail@gmail.com 2;test 1
