@@ -3,10 +3,8 @@ package ru.stqa.course.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import ru.stqa.course.addressbook.tests.ContactEmailTests;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -37,11 +35,14 @@ public class ContactData {
   private String email2;
   @Expose
   private String email3;
+  @XStreamOmitField
   private String allEmails;
   private String homepage;
+  @XStreamOmitField
   private String allPhones;
   private String allInfo;
   private String group;
+  @XStreamOmitField
   private File photo;
 
   public File getPhoto() {
@@ -244,19 +245,19 @@ public class ContactData {
 
   public ContactData withEmail(String email) {
     this.email = email;
-    this.allEmails = this.getMergeEmails();
+    this.allEmails = this.getMergedEmails();
     return this;
   }
 
   public ContactData withEmail2(String email2) {
     this.email2 = email2;
-    this.allEmails = this.getMergeEmails();
+    this.allEmails = this.getMergedEmails();
     return this;
   }
 
   public ContactData withEmail3(String email3) {
     this.email3 = email3;
-    this.allEmails = this.getMergeEmails();
+    this.allEmails = this.getMergedEmails();
     return this;
   }
 
@@ -270,7 +271,7 @@ public class ContactData {
     return this;
   }
 
-  private String getMergedPhones() {
+  public String getMergedPhones() {
     return Stream.of(this.getHome(), this.getMobile(), this.getWork()).filter((s) -> ! s.equals(""))
             .map(ContactData::cleanedPhone)
             .collect(Collectors.joining("\n"));
@@ -280,7 +281,7 @@ public class ContactData {
     return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
   }
 
-  private String getMergeEmails() {
+  public String getMergedEmails() {
     return Stream.of(this.getEmail(), this.getEmail2(), this.getEmail3()).filter((e) -> ! e.equals(""))
             .map(ContactData::cleanedMail)
             .collect(Collectors.joining("\n"));
@@ -301,13 +302,15 @@ public class ContactData {
             ", title='" + title + '\'' +
             ", company='" + company + '\'' +
             ", address='" + address + '\'' +
-            ", home='" + home + '\'' +
-            ", mobile='" + mobile + '\'' +
-            ", work='" + work + '\'' +
+            //", home='" + home + '\'' +
+            //", mobile='" + mobile + '\'' +
+            //", work='" + work + '\'' +
+            ", allPhones='" + allPhones + '\'' +
             ", fax='" + fax + '\'' +
-            ", email='" + email + '\'' +
-            ", email2='" + email2 + '\'' +
-            ", email3='" + email3 + '\'' +
+            //", email='" + email + '\'' +
+            //", email2='" + email2 + '\'' +
+            //", email3='" + email3 + '\'' +
+            ", allEmails='" + allEmails + '\'' +
             ", homepage='" + homepage + '\'' +
             '}';
   }
@@ -327,14 +330,14 @@ public class ContactData {
     if (title != null ? !title.equals(that.title) : that.title != null) return false;
     if (company != null ? !company.equals(that.company) : that.company != null) return false;
     if (address != null ? !address.equals(that.address) : that.address != null) return false;
-   // if (home != null ? !home.equals(that.home) : that.home != null) return false;
-   // if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
-   // if (work != null ? !work.equals(that.work) : that.work != null) return false;
+    //if (home != null ? !home.equals(that.home) : that.home != null) return false;
+    //if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
+    //if (work != null ? !work.equals(that.work) : that.work != null) return false;
     if (allPhones != null ? !allPhones.equals(that.allPhones) : that.allPhones != null) return false;
     if (fax != null ? !fax.equals(that.fax) : that.fax != null) return false;
-   // if (email != null ? !email.equals(that.email) : that.email != null) return false;
-   // if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
-   // if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
+    //if (email != null ? !email.equals(that.email) : that.email != null) return false;
+    //if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+    //if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
     if (allEmails != null ? !allEmails.equals(that.allEmails) : that.allEmails != null) return false;
     return homepage != null ? homepage.equals(that.homepage) : that.homepage == null;
 
@@ -352,10 +355,10 @@ public class ContactData {
     result = 31 * result + (address != null ? address.hashCode() : 0);
     //result = 31 * result + (home != null ? home.hashCode() : 0);
     //result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
-   // result = 31 * result + (work != null ? work.hashCode() : 0);
+    //result = 31 * result + (work != null ? work.hashCode() : 0);
     result = 31 * result + (allPhones != null ? allPhones.hashCode() : 0);
     result = 31 * result + (fax != null ? fax.hashCode() : 0);
-   // result = 31 * result + (email != null ? email.hashCode() : 0);
+    //result = 31 * result + (email != null ? email.hashCode() : 0);
     //result = 31 * result + (email2 != null ? email2.hashCode() : 0);
     //result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);

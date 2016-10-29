@@ -90,12 +90,12 @@ public class ContactDataGenerator {
       contacts.add(new ContactData().withName(String.format("name %s", i))
               .withLastName(String.format("surname %s", i))
               .withAddress(String.format("address %s", i))
-              .withHome(String.format("+7 111 111 %s", i))
-              .withMobile(String.format("33 44 %s", i))
-              .withWork(String.format("44-55-66 %s", i))
-              .withEmail(String.format("mymail@rambler.ru %s", i))
-              .withEmail2(String.format("mymail@yandex.ru %s", i))
-              .withEmail3(String.format("mymail@gmail.com %s", i))
+              .withHome(String.format("+7 111 111"))
+              .withMobile(String.format("33 44"))
+              .withWork(String.format("44-55-66"))
+              .withEmail(String.format("mymail@rambler.ru"))
+              .withEmail2(String.format("mymail@yandex.ru"))
+              .withEmail3(String.format("mymail@gmail.com"))
               .withGroup(String.format("test 1")));
     }
     return contacts;
