@@ -36,11 +36,14 @@ public class ContactData {
   @Expose
   private String email3;
   @XStreamOmitField
+  @Expose
   private String allEmails;
   private String homepage;
   @XStreamOmitField
+  @Expose
   private String allPhones;
   private String allInfo;
+  @Expose
   private String group;
   @XStreamOmitField
   private File photo;
