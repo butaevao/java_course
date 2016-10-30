@@ -79,7 +79,8 @@ public class ContactDataGenerator {
         writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getName(),
                 contact.getLastName(), contact.getAddress(),
                 contact.getHome(), contact.getMobile(), contact.getWork(),
-                contact.getEmail(), contact.getEmail2(), contact.getEmail3(), contact.getGroup()));
+                contact.getEmail(), contact.getEmail2(), contact.getEmail3(),
+                contact.getGroup()));
       }
     }
   }

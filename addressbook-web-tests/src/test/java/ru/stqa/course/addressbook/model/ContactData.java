@@ -3,49 +3,104 @@ package ru.stqa.course.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
+
   @Expose
+  @Column(name = "firstname")
   private String name;
+
+  @Transient
   private String middlename;
+
   @Expose
+  @Column(name = "lastname")
   private String lastName;
+
+  @Transient
   private String nickname;
+
+  @Transient
   private String title;
+
+  @Transient
   private String company;
+
   @Expose
+  @Column(name = "address")
+  @Type(type = "text")
   private String address;
+
   @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private String home;
+
   @Expose
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobile;
+
   @Expose
+  @Column(name = "work")
+  @Type(type = "text")
   private String work;
+
+  @Transient
   private String fax;
+
   @Expose
+  @Column(name = "email")
+  @Type(type = "text")
   private String email;
+
   @Expose
+  @Column(name = "email2")
+  @Type(type = "text")
   private String email2;
+
   @Expose
+  @Column(name = "email3")
+  @Type(type = "text")
   private String email3;
+
   @XStreamOmitField
   @Expose
+  @Transient
   private String allEmails;
+
+  @Transient
   private String homepage;
+
   @XStreamOmitField
   @Expose
+  @Transient
   private String allPhones;
+
+  @Transient
   private String allInfo;
+
   @Expose
+  @Transient
   private String group;
+
   @XStreamOmitField
+  //@Column(name = "photo")
+  //@Type(type = "text")
+  @Transient
   private File photo;
 
   public File getPhoto() {
@@ -342,6 +397,7 @@ public class ContactData {
     //if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
     //if (email3 != null ? !email3.equals(that.email3) : that.email3 != null) return false;
     if (allEmails != null ? !allEmails.equals(that.allEmails) : that.allEmails != null) return false;
+    if (photo != null ? !photo.equals(that.photo) : that.photo != null) return false;
     return homepage != null ? homepage.equals(that.homepage) : that.homepage == null;
 
   }
@@ -365,6 +421,7 @@ public class ContactData {
     //result = 31 * result + (email2 != null ? email2.hashCode() : 0);
     //result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);
+    result = 31 * result + (photo != null ? photo.hashCode() : 0);
     result = 31 * result + (homepage != null ? homepage.hashCode() : 0);
     return result;
   }
