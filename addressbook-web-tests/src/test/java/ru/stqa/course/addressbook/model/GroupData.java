@@ -61,19 +61,6 @@ public class GroupData {
     return this;
   }
 
-  public GroupData withFooter(String footer) {
-    this.footer = footer;
-    return this;
-  }
-
-  @Override
-  public String toString() {
-    return "GroupData{" +
-            "id='" + id + '\'' +
-            ", name='" + name + '\'' +
-            '}';
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -96,4 +83,19 @@ public class GroupData {
     result = 31 * result + (footer != null ? footer.hashCode() : 0);
     return result;
   }
+
+  public GroupData withFooter(String footer) {
+    this.footer = footer;
+    return this;
+
+  }
+
+  @Override
+  public String toString() {
+    return "GroupData{" +
+            "id='" + id + '\'' +
+            ", name='" + name + '\'' +
+            '}';
+  }
+
 }
