@@ -3,10 +3,13 @@ package ru.stqa.course.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -93,9 +96,10 @@ public class ContactData {
   @Transient
   private String allInfo;
 
-  @Expose
-  @Transient
-  private String group;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "address_in_groups",
+          joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
 
   @XStreamOmitField
   //@Column(name = "photo")
@@ -229,12 +233,12 @@ public class ContactData {
     return homepage;
   }
 
-  public String getGroup() {
-   return group;
-  }
-
   public int getId() {
     return id;
+  }
+
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   public ContactData withId(int id) {
@@ -321,11 +325,6 @@ public class ContactData {
 
   public ContactData withHomepage(String homepage) {
     this.homepage = homepage;
-    return this;
-  }
-
-  public ContactData withGroup(String group) {
-    this.group = group;
     return this;
   }
 
@@ -424,5 +423,10 @@ public class ContactData {
     result = 31 * result + (photo != null ? photo.hashCode() : 0);
     result = 31 * result + (homepage != null ? homepage.hashCode() : 0);
     return result;
+  }
+
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
   }
 }
