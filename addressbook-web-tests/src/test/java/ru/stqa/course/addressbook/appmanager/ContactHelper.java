@@ -56,6 +56,10 @@ public class ContactHelper extends HelperBase {
     }
   }
 
+  public void addContactinGroup() {
+    click(By.name("add"));
+  }
+
   public void deleteSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
@@ -77,7 +81,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void create(ContactData contact) {
-    fillContactForm(contact, true);
+    fillContactForm(contact, false);
     submitContactCreation();
     contactCache = null;
   }
@@ -87,6 +91,13 @@ public class ContactHelper extends HelperBase {
     initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitModification();
+    navHelp.homePage();
+    contactCache = null;
+  }
+
+  public void addGroup(ContactData contact, NavigationHelper navHelp) {
+    selectContactById(contact.getId());
+    addContactinGroup();
     navHelp.homePage();
     contactCache = null;
   }

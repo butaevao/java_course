@@ -3,10 +3,7 @@ package ru.stqa.course.addressbook.tests;
 import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import ru.stqa.course.addressbook.appmanager.ApplicationManager;
 import ru.stqa.course.addressbook.model.Contacts;
 import ru.stqa.course.addressbook.model.GroupData;
@@ -29,9 +26,10 @@ public class TestBase {
   protected static final ApplicationManager app
           = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
 
-  @BeforeSuite
+  @BeforeClass
   public void setUp() throws Exception {
     app.init();
+    System.out.println(app);
   }
 
   @AfterSuite (alwaysRun = true)

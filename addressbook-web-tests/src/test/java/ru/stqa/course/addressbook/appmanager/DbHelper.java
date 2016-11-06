@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 public class DbHelper {
 
-  private final SessionFactory sessionFactory;
+  public final SessionFactory sessionFactory;
 
   public DbHelper() {
     // A SessionFactory is set up once for an application!
