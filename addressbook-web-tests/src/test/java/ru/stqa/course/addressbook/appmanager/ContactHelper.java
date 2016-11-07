@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.course.addressbook.model.ContactData;
 import ru.stqa.course.addressbook.model.Contacts;
+import ru.stqa.course.addressbook.model.GroupData;
 import ru.stqa.course.addressbook.model.Groups;
 
 import java.util.Arrays;
@@ -64,6 +65,11 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
+  public void removeContactFromGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    click(By.name("remove"));
+  }
+
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
@@ -75,6 +81,8 @@ public class ContactHelper extends HelperBase {
   public void viewContactInfoById(int id) {
     wd.findElement(By.cssSelector("a[href='view.php?id=" + id + "']")).click();
   }
+
+
 
   public void submitModification() {
     click(By.name("update"));

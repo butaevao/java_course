@@ -42,7 +42,7 @@ public class AddContactInGroup extends TestBase {
   }
 
   @Test
-  public void testContactModification() {
+  public void testAddContactInGroup() {
     app.goTo().homePage();
     int contactId = 0;
 
