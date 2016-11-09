@@ -45,4 +45,13 @@ public class DbHelper {
     session.close();
     return new Contacts(result.stream().map((g) -> g.withAllEmails(g.getMergedEmails()).withAllPhones(g.getMergedPhones())).collect(Collectors.toList()));
   }
+
+  public Contacts getActiveContacts() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00' order by id desc").list();
+    session.getTransaction().commit();
+    session.close();
+    return new Contacts(result);
+  }
 }

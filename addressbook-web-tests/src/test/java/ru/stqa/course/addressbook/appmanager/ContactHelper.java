@@ -1,5 +1,6 @@
 package ru.stqa.course.addressbook.appmanager;
 
+import org.hibernate.Session;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,8 +22,11 @@ import java.util.stream.Collectors;
  */
 public class ContactHelper extends HelperBase {
 
-  public ContactHelper(WebDriver wd) {
+  private ApplicationManager app;
+
+  public ContactHelper(WebDriver wd, ApplicationManager app) {
     super(wd);
+    this.app = app;
   }
 
   public void submitContactCreation() {
@@ -94,28 +98,28 @@ public class ContactHelper extends HelperBase {
     contactCache = null;
   }
 
-  public void modify(ContactData contact, NavigationHelper navHelp) {
+  public void modify(ContactData contact) {
     selectContactById(contact.getId());
     initContactModificationById(contact.getId());
     fillContactForm(contact, false);
     submitModification();
-    navHelp.homePage();
+    app.goTo().homePage();
     contactCache = null;
   }
 
-  public void addGroup(ContactData contact, NavigationHelper navHelp) {
+  public void addGroup(ContactData contact) {
     selectContactById(contact.getId());
     addContactinGroup();
-    navHelp.homePage();
+    app.goTo().homePage();
     contactCache = null;
   }
 
-  public void delete(ContactData contact, NavigationHelper navHelp) {
+  public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deleteSelectedContact();
     alertOk();
     contactCache = null;
-    navHelp.homePage();
+    app.goTo().homePage();
   }
 
   public boolean isThereAContact() {
@@ -125,6 +129,8 @@ public class ContactHelper extends HelperBase {
   public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
+
+
 
   private Contacts contactCache = null;
 

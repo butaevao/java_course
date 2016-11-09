@@ -1,13 +1,11 @@
 package ru.stqa.course.addressbook.tests;
 
-import org.hibernate.Session;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.course.addressbook.model.ContactData;
 import ru.stqa.course.addressbook.model.GroupData;
 import ru.stqa.course.addressbook.model.Groups;
 
-import java.util.List;
 
 
 /**
@@ -24,13 +22,7 @@ public class AddContactInGroup extends TestBase {
       app.group().create(new GroupData().withName("test3"));
     }
 
-    Session session = app.db().sessionFactory.openSession();
-    session.beginTransaction();
-    List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
-    session.getTransaction().commit();
-    session.close();
-
-    for (ContactData contact : result) {
+    for (ContactData contact : app.db().contacts()) {
       if (contact.getGroups().size() == 0) {
         return;
       }
@@ -46,29 +38,19 @@ public class AddContactInGroup extends TestBase {
     app.goTo().homePage();
     int contactId = 0;
 
-    Session session = app.db().sessionFactory.openSession();
-    session.beginTransaction();
-    List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00' order by id desc").list();
-    session.getTransaction().commit();
-    for (ContactData contact : result) {
+    for (ContactData contact : app.db().contacts()) {
       if (contact.getGroups().size() == 0) {
-        app.contact().addGroup(contact, app.goTo());
+        app.contact().addGroup(contact);
         contactId = contact.getId();
         break;
       }
     }
-    session.close();
 
-    session = app.db().sessionFactory.openSession();
-    session.beginTransaction();
-    result = session.createQuery("from ContactData where deprecated = '0000-00-00' order by id desc").list();
-    session.getTransaction().commit();
-    for (ContactData contact : result) {
+    for (ContactData contact : app.db().contacts()) {
       if (contact.getId() == contactId && contact.getGroups().size() > 0) {
         System.out.println("Для контакта " + contact.getId() + " группа добавлена");
         break;
       }
     }
-    session.close();
-    }
   }
+}

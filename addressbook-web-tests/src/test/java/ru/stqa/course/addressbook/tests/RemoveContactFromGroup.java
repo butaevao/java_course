@@ -1,12 +1,11 @@
 package ru.stqa.course.addressbook.tests;
 
-import org.hibernate.Session;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.course.addressbook.model.ContactData;
 import ru.stqa.course.addressbook.model.GroupData;
 import ru.stqa.course.addressbook.model.Groups;
-import java.util.List;
+
 
 /**
  * Created by Оля on 07.11.2016.
@@ -31,20 +30,14 @@ public class RemoveContactFromGroup extends TestBase  {
               .inGroup(groups.iterator().next()));
    }
 
-   Session session = app.db().sessionFactory.openSession();
-   session.beginTransaction();
-   List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
-   session.getTransaction().commit();
-   session.close();
-
-   for (ContactData contact : result) {
+   for (ContactData contact : app.db().contacts()) {
      if (contact.getGroups().size() != 0) {
        return;
      }
    }
-   ContactData contactWithoutGroup = result.iterator().next();
+   ContactData contactWithoutGroup = app.db().contacts().iterator().next();
    app.goTo().homePage();
-   app.contact().addGroup(contactWithoutGroup, app.goTo());
+   app.contact().addGroup(contactWithoutGroup);
  }
 
  @Test
@@ -55,29 +48,19 @@ public class RemoveContactFromGroup extends TestBase  {
    GroupData selectedGroup = groupsList.iterator().next();
    app.group().selectGroupFromList(selectedGroup);
 
-   Session session = app.db().sessionFactory.openSession();
-   session.beginTransaction();
-   List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00' order by id desc").list();
-   session.getTransaction().commit();
-   for (ContactData contact : result) {
+   for (ContactData contact : app.db().contacts()) {
      if (contact.getGroups().contains(selectedGroup) ) {
        app.contact().removeContactFromGroup(contact);
        contactId = contact.getId();
        break;
      }
    }
-   session.close();
 
-   session = app.db().sessionFactory.openSession();
-   session.beginTransaction();
-   result = session.createQuery("from ContactData where deprecated = '0000-00-00' order by id desc").list();
-   session.getTransaction().commit();
-   for (ContactData contact : result) {
+   for (ContactData contact : app.db().contacts()) {
      if (contact.getId() == contactId && !(contact.getGroups().contains(selectedGroup))) {
        System.out.println("Контакт " + contact.getId() + " удален из группы " + selectedGroup.getName());
        break;
      }
    }
-   session.close();
  }
 }
