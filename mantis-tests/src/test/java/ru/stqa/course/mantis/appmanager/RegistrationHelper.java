@@ -1,7 +1,7 @@
 package ru.stqa.course.mantis.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+
 
 /**
  * Created by Оля on 10.11.2016.
