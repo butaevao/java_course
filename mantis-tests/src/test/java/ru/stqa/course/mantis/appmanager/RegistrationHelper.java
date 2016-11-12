@@ -1,6 +1,10 @@
 package ru.stqa.course.mantis.appmanager;
 
 import org.openqa.selenium.By;
+import ru.lanwen.verbalregex.VerbalExpression;
+import ru.stqa.course.mantis.model.MailMessage;
+
+import java.util.List;
 
 
 /**
@@ -24,5 +28,12 @@ public class RegistrationHelper extends HelperBase {
     type(By.name("password"), password);
     type(By.name("password_confirm"), password);
     click(By.cssSelector("input[value='Update User']"));
+  }
+
+  public String findConfirmationLink(List<MailMessage> mailMessages, String email) {
+    MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
+    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
+    return regex.getText(mailMessage.text);
+
   }
 }
