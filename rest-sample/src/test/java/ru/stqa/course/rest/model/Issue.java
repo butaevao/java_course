@@ -1,4 +1,4 @@
-package ru.stqa.course.rest;
+package ru.stqa.course.rest.model;
 
 /**
  * Created by ola on 16.11.2016.
